@@ -1,56 +1,373 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Centre d’Imagerie Benameur</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #333;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Centre d'Imagerie Benameur</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset et base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f8fafb;
+    color: #333;
+    line-height: 1.6;
+  }
+  a {
+    color: #00796b; text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #004d40;
+  }
+
+  /* Header */
+  header {
+    background-color: #00796b;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.2rem;
+  }
+  header p {
+    font-weight: 300;
+    font-size: 1.1rem;
+  }
+
+  /* Nav */
+  nav {
+    background: #004d40;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    font-weight: 600;
+    position: sticky;
+    top: 72px;
+    z-index: 999;
+  }
+  nav a {
+    color: white;
+    font-size: 1rem;
+  }
+  nav a:hover {
+    color: #80cbc4;
+  }
+
+  /* Main content */
+  main {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  section {
+    margin-bottom: 4rem;
+  }
+  h2 {
+    color: #00796b;
+    border-bottom: 3px solid #004d40;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  p, li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  ul {
+    list-style: inside disc;
+  }
+
+  /* Team */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 2rem;
+  }
+  .team-member {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    text-align: center;
+  }
+  .team-member img {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  .team-member h3 {
+    margin-bottom: 0.2rem;
+    color: #004d40;
+  }
+  .team-member p {
+    font-style: italic;
+    color: #555;
+  }
+
+  /* Testimonials */
+  .testimonial {
+    background: #e0f2f1;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  }
+  .testimonial p {
+    font-style: italic;
+  }
+  .testimonial .author {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #004d40;
+  }
+
+  /* Contact info */
+  .contact-info {
+    background: #e0f2f1;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+  }
+  .contact-info p {
+    margin: 0.4rem 0;
+    font-weight: 600;
+  }
+  .contact-info a {
+    color: #00796b;
+  }
+
+  /* Form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 480px;
+  }
+  input, textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #00796b;
+    box-shadow: 0 0 6px #80cbc4;
+  }
+  button {
+    background-color: #00796b;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #004d40;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #004d40;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+  footer .social-icons a {
+    color: white;
+    margin: 0 0.8rem;
+    font-size: 1.5rem;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+  footer .social-icons a:hover {
+    color: #80cbc4;
+  }
+
+  /* Map */
+  #map {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.9rem;
     }
-    header {
-      background-color: #009688;
-      color: white;
-      padding: 2rem 1rem;
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+      position: static;
     }
     main {
-      padding: 2rem 1rem;
+      margin: 1rem;
+      padding: 0;
     }
-    footer {
-      background-color: #004d40;
-      color: white;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    h1 {
-      margin: 0;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Centre d’Imagerie Benameur</h1>
-    <p>Radiologie et imagerie médicale à Oran</p>
-  </header>
 
-  <main>
-    <p><strong>Adresse :</strong> 32 Boulevard Hammou Boutlelis, Oran</p>
-    <p><strong>Téléphone :</strong> 0661 59 81 32</p>
-    <p><strong>Email :</strong> cherif.benameur@gmail.com</p>
-  </main>
+<header>
+  <h1>Centre d'Imagerie Benameur</h1>
+  <p>Radiologie et imagerie médicale à Oran</p>
+</header>
 
-  <footer>
-    &copy; 2025 Centre d’Imagerie Benameur
-  </footer>
+<nav>
+  <a href="#about">À propos</a>
+  <a href="#team">Équipe</a>
+  <a href="#services">Services</a>
+  <a href="#testimonials">Témoignages</a>
+  <a href="#hours">Horaires</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+  <section id="about">
+    <h2>À propos du Dr. Cherif Benameur</h2>
+    <p>Le Dr. Cherif Benameur est un radiologue expérimenté, passionné par la technologie médicale et engagé à fournir des diagnostics précis et un suivi personnalisé à ses patients.</p>
+    <p>Notre centre, situé au 32 Boulevard Hammou Boutlelis, Oran, offre des services d’imagerie de pointe dans un environnement confortable et moderne.</p>
+  </section>
+
+  <section id="team">
+    <h2>Notre Équipe Médicale</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Cherif Benameur" />
+        <h3>Dr. Cherif Benameur</h3>
+        <p>Radiologue principal</p>
+      </div>
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Assistante médicale" />
+        <h3>Mme. Samira K.</h3>
+        <p>Assistante médicale</p>
+      </div>
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Technicien en radiologie" />
+        <h3>M. Ahmed L.</h3>
+        <p>Technicien en radiologie</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Nos Services</h2>
+    <ul>
+      <li>Radiologie générale (rayons X)</li>
+      <li>Échographie</li>
+      <li>Scanner (CT scan)</li>
+      <li>IRM (Imagerie par Résonance Magnétique)</li>
+      <li>Mammographie</li>
+      <li>Densitométrie osseuse</li>
+    </ul>
+  </section>
+
+  <section id="testimonials">
+    <h2>Témoignages</h2>
+    <div class="testimonial">
+      <p>"Un service rapide et professionnel. Le Dr. Benameur a su me mettre en confiance."</p>
+      <div class="author">- Amina D.</div>
+    </div>
+    <div class="testimonial">
+      <p>"Personnel très accueillant et équipements modernes. Je recommande vivement."</p>
+      <div class="author">- Karim M.</div>
+    </div>
+  </section>
+
+  <section id="hours">
+    <h2>Horaires d’ouverture</h2>
+    <p>Lundi - Vendredi : 8h00 - 18h00</p>
+    <p>Samedi : 9h00 - 13h00</p>
+    <p>Dimanche : Fermé</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contactez-nous</h2>
+    <div class="contact-info">
+      <p>Adresse : 32 Boulevard Hammou Boutlelis, Oran, Algérie</p>
+      <p>Téléphone : <a href="tel:+213661598132">0661 598 132</a></p>
+      <p>Email : <a href="mailto:cherif.benameur@gmail.com">cherif.benameur@gmail.com</a></p>
+    </div>
+
+    <form id="contactForm" action="https://formspree.io/f/mayvlzqn" method="POST">
+      <input type="text" name="name" placeholder="Votre nom" required />
+      <input type="email" name="email" placeholder="Votre email" required />
+      <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+      <button type="submit">Envoyer</button>
+      <p id="formMessage" style="color:green; display:none; margin-top:10px;">Merci pour votre message, nous vous répondrons bientôt.</p>
+    </form>
+
+    <div id="map"></div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Centre d'Imagerie Benameur</p>
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook" rel="noopener">Facebook</a> |
+    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  // Formulaire avec message de confirmation
+  const form = document.getElementById('contactForm');
+  const messageEl = document.getElementById('formMessage');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        messageEl.style.display = 'block';
+      } else {
+        alert('Erreur lors de l\'envoi, veuillez réessayer.');
+      }
+    }).catch(() => alert('Erreur lors de l\'envoi, veuillez réessayer.'));
+  });
+
+  // Google Maps
+  function initMap() {
+    const center = { lat: 35.6961, lng: -0.6367 }; // Oran coords
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center
+    });
+    const marker = new google.maps.Marker({
+      position: center,
+      map: map,
+      title: 'Centre d\'Imagerie Benameur'
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ReplaceThisWithYourKey&callback=initMap"></script>
+
 </body>
 </html>
