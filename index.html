@@ -5,181 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Centre d'Imagerie Benameur</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: #f8fafb;
-      color: #333;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #00796b;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-family: 'Poppins', sans-serif;
-    }
-    nav {
-      background: #004d40;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      font-weight: 600;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-    }
-    nav a:hover {
-      color: #80cbc4;
-    }
-    main {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      color: #00796b;
-      border-bottom: 3px solid #004d40;
-      padding-bottom: 0.4rem;
-      font-family: 'Poppins', sans-serif;
-    }
-    .contact-info {
-      background: #e0f2f1;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 480px;
-    }
-    input, textarea {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    button {
-      background-color: #00796b;
-      color: white;
-      padding: 0.9rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #004d40;
-    }
-    #map {
-      width: 100%;
-      height: 300px;
-      border-radius: 10px;
-      margin-top: 1rem;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-    footer {
-      background-color: #004d40;
-      color: white;
-      text-align: center;
-      padding: 1.5rem 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css" />
 </head>
 <body>
-
-<header>
-  <h1>Centre d'Imagerie Benameur</h1>
-  <p>Radiologie et imagerie médicale à Oran</p>
-</header>
-
-<nav>
-  <a href="#about">À propos</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<main>
-  <section id="about">
-    <h2>À propos du Dr. Cherif Benameur</h2>
-    <p>Le Dr. Cherif Benameur est un radiologue expérimenté basé à Oran, spécialisé dans les diagnostics d’imagerie médicale modernes.</p>
-  </section>
-
-  <section id="services">
-    <h2>Nos Services</h2>
-    <ul>
-      <li>Radiologie générale</li>
-      <li>Échographie</li>
-      <li>IRM</li>
-      <li>Scanner</li>
-      <li>Mammographie</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contactez-nous</h2>
-    <div class="contact-info">
-      <p>Adresse : 32 Boulevard Hammou Boutlelis, Oran, Algérie</p>
-      <p>Téléphone : <a href="tel:+213661598132">0661 598 132</a></p>
-      <p>Email : <a href="mailto:cherif.benameur@gmail.com">cherif.benameur@gmail.com</a></p>
+  <!-- Header -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Centre d'Imagerie Benameur</h1>
+      <p>Un centre médical à la pointe de la technologie</p>
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
     </div>
+  </header>
 
-    <form id="contactForm" action="https://formspree.io/f/mayvlzqn" method="POST">
-      <input type="text" name="name" placeholder="Votre nom" required />
-      <input type="email" name="email" placeholder="Votre email" required />
-      <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
-      <button type="submit">Envoyer</button>
-      <p id="formMessage" style="color:green; display:none; margin-top:10px;">Merci pour votre message, nous vous répondrons bientôt.</p>
-    </form>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#team">L'équipe</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Témoignages</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div id="map"></div>
-  </section>
-</main>
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2>À propos de nous</h2>
+        <p>Notre centre est dirigé par le Dr. Cherif Benameur, radiologue expérimenté avec une passion pour les technologies de pointe.</p>
+        <p>Nous offrons des services d’imagerie médicale de qualité dans un environnement moderne et confortable.</p>
+      </div>
+    </section>
 
-<footer>
-  <p>© 2025 Centre d'Imagerie Benameur</p>
-</footer>
+    <!-- Team Section -->
+    <section id="team" class="team">
+      <div class="container">
+        <h2>Notre Équipe</h2>
+        <div class="team-members">
+          <div class="team-member">
+            <img src="images/dr_cherif.jpg" alt="Dr. Cherif Benameur">
+            <h3>Dr. Cherif Benameur</h3>
+            <p>Radiologue Principal</p>
+          </div>
+          <div class="team-member">
+            <img src="images/samira.jpg" alt="Samira K.">
+            <h3>Mme. Samira K.</h3>
+            <p>Assistante Médicale</p>
+          </div>
+          <div class="team-member">
+            <img src="images/ahmed.jpg" alt="Ahmed L.">
+            <h3>M. Ahmed L.</h3>
+            <p>Technicien en Radiologie</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Leaflet.js -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-  // Carte avec Leaflet
-  const map = L.map('map').setView([35.6961, -0.6367], 14); // Oran
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-  L.marker([35.6961, -0.6367]).addTo(map)
-    .bindPopup("Centre d'Imagerie Benameur")
-    .openPopup();
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2>Nos Services</h2>
+        <ul>
+          <li>Radiologie Générale (Rayons X)</li>
+          <li>Échographie</li>
+          <li>Scanner (CT Scan)</li>
+          <li>IRM (Imagerie par Résonance Magnétique)</li>
+          <li>Mammographie</li>
+          <li>Densitométrie Osseuse</li>
+        </ul>
+      </div>
+    </section>
 
-  // Formulaire
-  const form = document.getElementById('contactForm');
-  const messageEl = document.getElementById('formMessage');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        form.reset();
-        messageEl.style.display = 'block';
-      } else {
-        alert('Erreur lors de l\'envoi.');
-      }
-    }).catch(() => alert('Erreur réseau.'));
-  });
-</script>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2>Témoignages</h2>
+        <div class="testimonial-carousel">
+          <div class="testimonial">
+            <p>"Excellent service. Dr. Benameur is very professional and made me feel at ease."</p>
+            <div class="author">- Amina D.</div>
+          </div>
+          <div class="testimonial">
+            <p>"Great experience, highly recommend. The staff is friendly and the technology is top notch."</p>
+            <div class="author">- Karim M.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-item">
+          <h3>Quels types d’examens réalisez-vous ?</h3>
+          <p>Nous réalisons des examens de radiologie générale, des échographies, des IRM, des scanners et bien plus encore.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Comment prendre rendez-vous ?</h3>
+          <p>Vous pouvez prendre rendez-vous en ligne ou nous appeler directement au 0661 598 132.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Contactez-nous</h2>
+        <form action="https://formspree.io/f/mayvlzqn" method="POST">
+          <input type="text" name="name" placeholder="Votre nom" required>
+          <input type="email" name="email" placeholder="Votre email" required>
+          <textarea name="message" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+        <div id="map"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Centre d'Imagerie Benameur. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    function initMap() {
+      var location = { lat: 35.6938, lng: -0.5937 }; // Oran, Algérie
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: location
+      });
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Centre d'Imagerie Benameur"
+      });
+    }
+
+    // Slick Carousel initialization for testimonials
+    $(document).ready(function(){
+      $('.testimonial-carousel').slick({
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false
+      });
+    });
+  </script>
 </body>
 </html>
